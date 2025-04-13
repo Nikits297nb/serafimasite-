@@ -1,0 +1,330 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Термины | Республика Серафимия ☭</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #1C2526;
+            color: #FFF;
+            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            touch-action: manipulation;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: #8B0000;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-toggle {
+            font-size: 1.8em;
+            color: #FFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            z-index: 1100;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: #4B0000;
+            padding: 20px 15px;
+            z-index: 1200;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            font-size: 1.8em;
+            color: #FFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1300;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin-top: 60px;
+        }
+
+        .side-menu a {
+            display: block;
+            font-size: 1.2em;
+            color: #FFF;
+            text-decoration: none;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: background 0.2s ease;
+        }
+
+        .side-menu a:hover {
+            background: #FF0000;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: #B22222;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #D3D3D3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 30px 0;
+        }
+
+        .terms {
+            display: grid;
+            gap: 20px;
+        }
+
+        .term {
+            background: #2F4F4F;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .term:hover {
+            transform: translateY(-5px);
+        }
+
+        .term h3 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .term p {
+            font-size: 1em;
+            color: #D3D3D3;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #2F4F4F;
+        }
+
+        footer p {
+            font-size: 1.3em;
+            color: #FFF;
+        }
+
+        @media (min-width: 768px) {
+            .terms {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.7em;
+            }
+
+            .term h3 {
+                font-size: 1.4em;
+            }
+
+            .term p {
+                font-size: 0.9em;
+            }
+
+            .side-menu {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" aria-label="Открыть меню"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div class="side-menu" id="side-menu">
+        <button class="close-menu" aria-label="Закрыть меню"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="termin.html">Термины</a></li>
+            <li><a href="ideology.html">Идеологии</a></li>
+            <li><a href="mite.html">Личности</a></li>
+            <li><a href="russiancivwar.html">Гражданская война в России</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>Термины марксизма ☭</h1>
+        <p>Республика Серафимия объясняет ключевые понятия, которые формируют революционное сознание и борьбу за бесклассовое общество.</p>
+    </header>
+
+    <div class="container">
+        <section id="terms" class="section">
+            <h2 class="section-title">Термины марксизма</h2>
+            <div class="terms">
+                <div class="term">
+                    <h3>Пролетариат</h3>
+                    <p>Рабочий класс, лишенный собственности на средства производства. Его труд создает богатство, но плоды присваивает буржуазия. Пролетариат — главная сила революции, способная уничтожить капитализм и построить бесклассовое общество через диктатуру пролетариата.</p>
+                </div>
+                <div class="term">
+                    <h3>Классовая борьба</h3>
+                    <p>Основа исторического развития, конфликт между угнетающими и угнетаемыми классами. При капитализме это борьба пролетариата против буржуазии. Она принимает формы забастовок, восстаний и революций, ведущих к свержению эксплуататоров.</p>
+                </div>
+                <div class="term">
+                    <h3>Средства производства</h3>
+                    <p>Инструменты, заводы, земля и технологии, необходимые для производства. В капитализме они принадлежат буржуазии, что позволяет ей эксплуатировать рабочих. Социализм требует их обобществления для служения народу.</p>
+                </div>
+                <div class="term">
+                    <h3>Диалектический материализм</h3>
+                    <p>Философия марксизма, объясняющая развитие мира через материальные процессы и противоречия. Диалектика изучает, как противоположности (например, труд и капитал) взаимодействуют, приводя к качественным изменениям, таким как революция.</p>
+                </div>
+                <div class="term">
+                    <h3>Коммунизм</h3>
+                    <p>Высшая стадия общественного развития, где отсутствуют классы, частная собственность и государство. Все работают по способностям и получают по потребностям. Это цель марксистской борьбы, достигаемая через социализм.</p>
+                </div>
+                <div class="term">
+                    <h3>Буржуазия</h3>
+                    <p>Класс собственников средств производства, живущий за счет эксплуатации труда рабочих. Буржуазия контролирует экономику и политику, поддерживая капитализм, но обречена на поражение в классовой борьбе.</p>
+                </div>
+                <div class="term">
+                    <h3>Социализм</h3>
+                    <p>Переходный этап к коммунизму, где средства производства принадлежат обществу, а власть — рабочему классу. Социализм устраняет эксплуатацию, но сохраняет распределение по труду до полного коммунизма.</p>
+                </div>
+                <div class="term">
+                    <h3>Отчуждение</h3>
+                    <p>Процесс, при котором рабочий теряет контроль над своим трудом и его результатами. В капитализме трудящиеся работают ради прибыли буржуазии, что лишает их свободы и смысла жизни. Коммунизм устраняет отчуждение.</p>
+                </div>
+                <div class="term">
+                    <h3>Революция</h3>
+                    <p>Радикальное изменение общественного строя, когда угнетенные классы свергают угнетателей. Пролетарская революция уничтожает капитализм, устанавливая социализм. Это неизбежный итог классовых противоречий.</p>
+                </div>
+                <div class="term">
+                    <h3>Гегемония</h3>
+                    <p>Идейное и культурное господство правящего класса, навязывающее его ценности обществу. Пролетариат должен создать свою гегемонию через революционную культуру, чтобы победить буржуазную идеологию.</p>
+                </div>
+                <div class="term">
+                    <h3>Материализм</h3>
+                    <p>Учение, утверждающее, что материальный мир первичен, а сознание — его отражение. В марксизме материализм объясняет развитие общества через экономические условия, а не идеи или религию.</p>
+                </div>
+                <div class="term">
+                    <h3>Интернационализм</h3>
+                    <p>Принцип единства рабочих всех стран в борьбе против капитала. Национальные границы — инструмент буржуазии для разделения пролетариата. Интернационализм требует глобальной солидарности.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Республика Серафимия — за правду и свободу!</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const closeMenu = document.querySelector('.close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

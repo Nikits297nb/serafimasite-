@@ -1,0 +1,327 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Республика Серафимия ☭</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #1C2526;
+            color: #FFF;
+            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            touch-action: manipulation;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: #8B0000;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-toggle {
+            font-size: 1.8em;
+            color: #FFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            z-index: 1100;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: #4B0000;
+            padding: 20px 15px;
+            z-index: 1200;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            font-size: 1.8em;
+            color: #FFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1300;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin-top: 60px;
+        }
+
+        .side-menu a {
+            display: block;
+            font-size: 1.2em;
+            color: #FFF;
+            text-decoration: none;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: background 0.2s ease;
+        }
+
+        .side-menu a:hover {
+            background: #FF0000;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: #B22222;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #D3D3D3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 30px 0;
+        }
+
+        .channels {
+            display: grid;
+            gap: 20px;
+        }
+
+        .channel {
+            background: #2F4F4F;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .channel:hover {
+            transform: translateY(-5px);
+        }
+
+        .channel h3 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .channel p {
+            font-size: 1em;
+            color: #D3D3D3;
+            margin-bottom: 15px;
+        }
+
+        .channel a {
+            display: block;
+            background: #FF0000;
+            color: #FFF;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background 0.2s ease;
+        }
+
+        .channel a:hover {
+            background: #B22222;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #2F4F4F;
+        }
+
+        footer p {
+            font-size: 1.3em;
+            color: #FFF;
+        }
+
+        @media (min-width: 768px) {
+            .channels {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.7em;
+            }
+
+            .channel h3 {
+                font-size: 1.4em;
+            }
+
+            .channel p {
+                font-size: 0.9em;
+            }
+
+            .channel a {
+                font-size: 1em;
+            }
+
+            .side-menu {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" aria-label="Открыть меню"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div class="side-menu" id="side-menu">
+        <button class="close-menu" aria-label="Закрыть меню"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="#channels">Главная</a></li>
+            <li><a href="termin.html">Термины</a></li>
+            <li><a href="ideology.html">Идеологии</a></li>
+            <li><a href="mite.html">Личности</a></li>
+            <li><a href="russiancivwar.html">Гражданская война в России</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>Республика Серафимия ☭</h1>
+        <p>Федерация Серафимы — бастион революции. Каналы для связи с народом и борьбы за правду.</p>
+    </header>
+
+    <div class="container">
+        <section id="channels" class="section">
+            <h2 class="section-title">Каналы</h2>
+            <div class="channels">
+                <div class="channel">
+                    <h3>Опросник</h3>
+                    <p>Ваш голос формирует будущее революции. Участвуйте в опросах и выражайте волю масс!</p>
+                    <a href="https://t.me/oprosiserafimi" target="_blank">Присоединиться</a>
+                </div>
+                <div class="channel">
+                    <h3>Цитаты Вождя</h3>
+                    <p>Мудрость лидеров вдохновляет на борьбу. Читайте и делитесь цитатами!</p>
+                    <a href="https://t.me/ncauz" target="_blank">Читать</a>
+                </div>
+                <div class="channel">
+                    <h3>История</h3>
+                    <p>Узнайте о славном прошлом, которое ведет нас к будущему.</p>
+                    <a href="https://t.me/historyserafima" target="_blank">Изучить</a>
+                </div>
+                <div class="channel">
+                    <h3>Мемы</h3>
+                    <p>Сатира — оружие против угнетателей. Смейтесь и боритесь!</p>
+                    <a href="https://t.me/memsserafima" target="_blank">Смотреть</a>
+                </div>
+                <div class="channel">
+                    <h3>NCAUZ PORTER</h3>
+                    <p>Голос Вождя объединяет нас в борьбе за Серафимию.</p>
+                    <a href="https://t.me/ncauz" target="_blank">Следовать</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Республика Серафимия — за правду и свободу!</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const closeMenu = document.querySelector('.close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

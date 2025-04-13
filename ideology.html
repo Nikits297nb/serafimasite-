@@ -1,0 +1,302 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Идеологии | Республика Серафимия ☭</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #1C2526;
+            color: #FFF;
+            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            touch-action: manipulation;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: #8B0000;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-toggle {
+            font-size: 1.8em;
+            color: #FFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            z-index: 1100;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background: #4B0000;
+            padding: 20px 15px;
+            z-index: 1200;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .close-menu {
+            font-size: 1.8em;
+            color: #FFF;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1300;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin-top: 60px;
+        }
+
+        .side-menu a {
+            display: block;
+            font-size: 1.2em;
+            color: #FFF;
+            text-decoration: none;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: background 0.2s ease;
+        }
+
+        .side-menu a:hover {
+            background: #FF0000;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: #B22222;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #D3D3D3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 30px 0;
+        }
+
+        .ideologies {
+            display: grid;
+            gap: 20px;
+        }
+
+        .ideology {
+            background: #2F4F4F;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .ideology:hover {
+            transform: translateY(-5px);
+        }
+
+        .ideology h3 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .ideology p {
+            font-size: 1em;
+            color: #D3D3D3;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #2F4F4F;
+        }
+
+        footer p {
+            font-size: 1.3em;
+            color: #FFF;
+        }
+
+        @media (min-width: 768px) {
+            .ideologies {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.7em;
+            }
+
+            .ideology h3 {
+                font-size: 1.4em;
+            }
+
+            .ideology p {
+                font-size: 0.9em;
+            }
+
+            .side-menu {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="menu-toggle" aria-label="Открыть меню"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <div class="side-menu" id="side-menu">
+        <button class="close-menu" aria-label="Закрыть меню"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="termin.html">Термины</a></li>
+            <li><a href="ideology.html">Идеологии</a></li>
+            <li><a href="mite.html">Личности</a></li>
+            <li><a href="russiancivwar.html">Гражданская война в России</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>Идеологии коммунизма ☭</h1>
+        <p>Республика Серафимия изучает и развивает революционные идеи, которые ведут к освобождению трудящихся и бесклассовому обществу.</p>
+    </header>
+
+    <div class="container">
+        <section id="ideologies" class="section">
+            <h2 class="section-title">Коммунистические идеологии</h2>
+            <div class="ideologies">
+                <div class="ideology">
+                    <h3>Марксизм</h3>
+                    <p>Марксизм, основанный Карлом Марксом и Фридрихом Энгельсом, — это научная теория общественного развития, которая объясняет историю через классовую борьбу. Основные положения марксизма включают диалектический материализм, утверждающий, что материальные условия определяют сознание, и исторический материализм, рассматривающий смену общественных формаций как результат экономических противоречий. В центре марксизма — анализ капитализма: труд рабочих создает прибавочную стоимость, присваиваемую буржуазией, что ведет к эксплуатации и кризисам. Главный труд Маркса, "Капитал", раскрывает механизмы накопления капитала и предсказывает его крах из-за внутренних противоречий. Марксизм видит пролетариат как силу, которая через революцию уничтожит капитализм и построит коммунизм — общество без классов, где средства производства принадлежат всем.</p>
+                </div>
+                <div class="ideology">
+                    <h3>Ленинизм</h3>
+                    <p>Ленинизм — это развитие марксизма в условиях империализма, созданное Владимиром Лениным. Он дополнил теорию Маркса анализом капитализма как глобальной системы, где монополии и финансовый капитал делят мир, вызывая войны и колониальное угнетение ("Империализм как высшая стадия капитализма"). Ленинизм подчеркивает необходимость партии нового типа — дисциплинированной организации профессиональных революционеров, которая ведет массы к свержению буржуазии. Ленин разработал концепцию диктатуры пролетариата как временной власти рабочего класса для подавления сопротивления эксплуататоров и построения социализма. Его труды, такие как "Государство и революция", стали основой Октябрьской революции 1917 года, доказавшей возможность социалистического переворота в одной стране. Ленинизм акцентирует интернационализм и поддержку национально-освободительных движений.</p>
+                </div>
+                <div class="ideology">
+                    <h3>Сталинизм</h3>
+                    <p>Сталинизм — практическое и теоретическое развитие марксизма-ленинизма, связанное с руководством Иосифа Сталина в СССР. Основной идеей было построение "социализма в одной стране", что означало укрепление социализма в СССР без немедленной мировой революции, в отличие от идей Троцкого. Сталинизм ассоциируется с ускоренной индустриализацией через пятилетние планы, превратившей СССР в промышленную державу, и коллективизацией сельского хозяйства, устранившей частную собственность на землю, но вызвавшей социальные потрясения, включая голод. Сталин усилил роль государства и партии в управлении обществом, что оправдывалось необходимостью защиты социализма от внешних и внутренних врагов. Его подход к национальному вопросу и укреплению советской власти оказал влияние на социалистические движения, но методы управления вызывали споры даже среди коммунистов.</p>
+                </div>
+                <div class="ideology">
+                    <h3>Маоизм</h3>
+                    <p>Маоизм — адаптация марксизма-ленинизма к условиям Китая, разработанная Мао Цзэдуном. В отличие от классического марксизма, где пролетариат — главная революционная сила, Мао сделал ставку на крестьянство как основу революции в аграрных странах. Его теория "народной войны" предусматривала партизанскую борьбу, окружающую города из деревень, что привело к победе китайской революции 1949 года. Маоизм подчеркивает непрерывную революцию для предотвращения реставрации капитализма, что воплотилось в Культурной революции (1966–1976), направленной на уничтожение буржуазных элементов в обществе и партии. Маоизм также акцентирует антиимпериализм и поддержку освободительных движений в "третьем мире". Его идеи вдохновили революционеров в Азии, Африке и Латинской Америке, но Культурная революция вызвала хаос и жертвы, что привело к переосмыслению маоизма после смерти Мао.</p>
+                </div>
+                <div class="ideology">
+                    <h3>Троцкизм</h3>
+                    <p>Троцкизм, созданный Львом Троцким, — течение в марксизме, акцентиру itself на идее "перманентной революции". Троцкий считал, что социалистическая революция в одной стране (особенно отсталой, как Россия) не может выжить без мировой революции, так как капиталистическое окружение угрожает социализму. В отличие от сталинизма, троцкизм отвергал "социализм в одной стране" и выступал за интернациональное распространение революции. Троцкий критиковал бюрократизацию СССР при Сталине, считая, что она искажает социализм, и предлагал усилить демократию внутри партии и рабочего класса. Его идеи о необходимости революционной борьбы против империализма и фашизма нашли отклик в Европе и Америке, но троцкистские движения часто оставались маргинальными из-за конфликтов с другими коммунистами. Троцкизм продолжает влиять на левые движения, подчеркивая антибюрократизм и глобальную солидарность.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Республика Серафимия — за правду и свободу!</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const closeMenu = document.querySelector('.close-menu');
+
+        menuToggle.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
